@@ -12,7 +12,7 @@ module.exports = {
       test: /\.jsx$/, // look for all *.jsx files
       exclude: /node_modules/,
     },{
-      test: /\.s?css$/,
+      test: /\.s?css$/, // look for both css and scss files
       use: [ // use allows us to use an array of loaders
         'style-loader',
         'css-loader',
@@ -23,5 +23,6 @@ module.exports = {
   devtool: 'cheap-module-eval-source-map', // implement sourcemap
   devServer: {
     contentBase: path.join(__dirname, 'public'), // watch public folder
+    historyApiFallback: true, // tells dev-server we r handling routing via client side code 
   }
 };
