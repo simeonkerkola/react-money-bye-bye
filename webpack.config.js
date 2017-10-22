@@ -1,7 +1,7 @@
 const path = require('path')
 
 module.exports = {
-  entry: './src/app.jsx',
+  entry: './src/playground/redux101.jsx',
   output: {
     path: path.join(__dirname, 'public'), // where you wanna output the webpack file
     filename: 'bundle.js' // common filename for webpack
@@ -23,6 +23,6 @@ module.exports = {
   devtool: 'cheap-module-eval-source-map', // implement sourcemap
   devServer: {
     contentBase: path.join(__dirname, 'public'), // watch public folder
-    historyApiFallback: true, // tells dev-server we r handling routing via client side code 
+    historyApiFallback: true, // tells dev-server we r handling routing via client side code
   }
 };
