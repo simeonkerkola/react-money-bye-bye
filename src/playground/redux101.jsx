@@ -20,11 +20,15 @@ const setCount = ({ count }) => ({ // no default values, forces user to provide 
   count,
 })
 
+// Reducers
+// 1. Reducers are pure functions
+// 2. Never change state or action
+
 // basically same as:
 // this.setState((prevState) => {
 //  return prevState
 // })
-const store = createStore((state = { count: 0 }, action) => {
+const countReducer = (state = { count: 0 }, action) => {
   // if (action.type === 'INCREMENT')
   switch (action.type) {
     case 'INCREMENT':
@@ -46,7 +50,9 @@ const store = createStore((state = { count: 0 }, action) => {
     default:
       return state
   }
-})
+}
+
+const store = createStore(countReducer)
 
 // Gets called every time the store changes
 // return value of subscribe is a function which unsubscribes
