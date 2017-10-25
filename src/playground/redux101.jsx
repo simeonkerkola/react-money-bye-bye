@@ -1,6 +1,7 @@
 import { createStore } from 'redux'
 
-const incrementCount = ({ incrementBy = 1} = {}) => ({ // If no args given, empty object as default, and incrementBy defaults 1
+// If no args given, empty object as default, and incrementBy defaults 1
+const incrementCount = ({ incrementBy = 1 } = {}) => ({
   type: 'INCREMENT',
   incrementBy,
 })
@@ -14,7 +15,8 @@ const resetCount = () => ({
   type: 'RESET',
 })
 
-const setCount = ({ count }) => ({ // no default values, forces user to provide count
+const setCount = ({ count }) => ({
+  // no default values, forces user to provide count
   type: 'SET',
   count,
 })
@@ -31,21 +33,21 @@ const countReducer = (state = { count: 0 }, action) => {
   // if (action.type === 'INCREMENT')
   switch (action.type) {
     case 'INCREMENT':
-    return {
-      count: state.count + action.incrementBy
-    }
+      return {
+        count: state.count + action.incrementBy,
+      }
     case 'DECREMENT':
-    return {
-      count: state.count - action.decrementBy
-    }
+      return {
+        count: state.count - action.decrementBy,
+      }
     case 'RESET':
-    return {
-      count: 0
-    }
+      return {
+        count: 0,
+      }
     case 'SET':
-    return {
-      count: action.count
-    }
+      return {
+        count: action.count,
+      }
     default:
       return state
   }
@@ -56,7 +58,7 @@ const store = createStore(countReducer)
 // Gets called every time the store changes
 // return value of subscribe is a function which unsubscribes
 const unsubscribe = store.subscribe(() => {
-  console.log(store.getState());
+  console.log(store.getState())
 })
 
 // store.dispatch({ // send the object to redux
