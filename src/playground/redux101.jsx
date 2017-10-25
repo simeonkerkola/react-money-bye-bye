@@ -2,7 +2,6 @@ import { createStore } from 'redux'
 
 const incrementCount = ({ incrementBy = 1} = {}) => ({ // If no args given, empty object as default, and incrementBy defaults 1
   type: 'INCREMENT',
-  // if payload argument given, check the type and add, or else default 1
   incrementBy,
 })
 

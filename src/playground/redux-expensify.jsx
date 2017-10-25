@@ -1,7 +1,25 @@
 import { createStore, combineReducers } from "redux"
+import uuid from "uuid"
 
 // ADD_EXPENSE
+const addExpense = (
+  { description = "", note = "", amount = 0, createdAt = 0 } = {}
+) => ({
+  type: "ADD_EXPENSE",
+  expense: {
+    id: uuid(),
+    description,
+    note,
+    amount,
+    createdAt
+  }
+})
+
 // REMOVE_EXPENSE
+const removeExpence = ({ id } = {}) => ({
+  type: "REMOVE_EXPENSE",
+  id,
+})
 // EDIT EXPENCE
 // SET_TEXT_FILTER
 // SORT_BY_DATE
@@ -10,6 +28,7 @@ import { createStore, combineReducers } from "redux"
 // SET_END_DATE
 
 const expensesReducerDefaultState = []
+
 const filtersReducerDefaultState = {
   text: "",
   sortBy: "date",
@@ -20,6 +39,13 @@ const filtersReducerDefaultState = {
 // Expenses reducer
 const expensesReducer = (state = expensesReducerDefaultState, action) => {
   switch (action.type) {
+    case 'ADD_EXPENSE':
+    return [ // Unlike .push(), spread operator or .concat() doesn't change the state
+      ...state,
+      action.expense
+    ]
+    case 'REMOVE_EXPENSE':
+      return state.filter(({ id }) => id !== action.id )
     default:
       return state
   }
@@ -40,11 +66,19 @@ const store = createStore(
   // thats supposed to manage that
   combineReducers({
     expenses: expensesReducer,
-    filters: filtersReducer,
+    filters: filtersReducer
   })
 )
 
-console.log(store.getState())
+store.subscribe(() => {
+  console.log(store.getState())
+})
+
+const expenceOne = store.dispatch(addExpense({ description: "Rent", amount: 666 }))
+const expenceTwo = store.dispatch(addExpense({ description: "Coffee", amount: 2 }))
+
+console.log(expenceOne.expense.id);
+store.dispatch(removeExpence({ id: expenceOne.expense.id }))
 
 const demoState = {
   expenses: [
