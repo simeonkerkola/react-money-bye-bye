@@ -53,16 +53,10 @@ const setEndDate = (endDate = undefined) => ({
   endDate,
 })
 
+// Expenses reducer
+
 const expensesReducerDefaultState = []
 
-const filtersReducerDefaultState = {
-  text: '',
-  sortBy: 'date',
-  startDate: undefined,
-  endDate: undefined,
-}
-
-// Expenses reducer
 const expensesReducer = (state = expensesReducerDefaultState, action) => {
   switch (action.type) {
     case 'ADD_EXPENSE':
@@ -89,6 +83,14 @@ const expensesReducer = (state = expensesReducerDefaultState, action) => {
 }
 
 // Filters reducer
+
+const filtersReducerDefaultState = {
+  text: '',
+  sortBy: 'date',
+  startDate: undefined,
+  endDate: undefined,
+}
+
 const filtersReducer = (state = filtersReducerDefaultState, action) => {
   switch (action.type) {
     case 'SET_TEXT_FILTER':
