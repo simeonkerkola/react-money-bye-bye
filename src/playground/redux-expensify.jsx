@@ -130,6 +130,13 @@ const getVisibleExpenses = (expenses, { text, sortBy, startDate, endDate }) => {
 
     // If any of these is false, return is false and
     return startDateMatch && endDateMatch && textMatch
+  }).sort((a, b) => {
+    if (sortBy === 'date') {
+      return a.createdAt < b.createdAt ? 1 : -1
+    } else if (sortBy === 'amount') {
+      return a.amount < b.amount ? 1 : -1
+    }
+    return 0
   })
 }
 // Store creation
@@ -150,12 +157,12 @@ store.subscribe(() => {
 })
 
 const expenceOne = store.dispatch(addExpense({ description: 'Rent', amount: 666, createdAt: 1000 }))
-const expenceTwo = store.dispatch(addExpense({ description: 'Coffee', amount: 2, createdAt: -1000 }))
+const expenceTwo = store.dispatch(addExpense({ description: 'Coffee', amount: 20000, createdAt: -1000 }))
 //
 // store.dispatch(removeExpence({ id: expenceOne.expense.id }))
 // store.dispatch(editExpense(expenceTwo.expense.id, { amount: 500 }))
 //
-store.dispatch(setTextFilter('cof'))
+// store.dispatch(setTextFilter('cof'))
 // store.dispatch(setTextFilter())
 //
 // store.dispatch(sortByAmount())
