@@ -1,5 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import { Provider } from 'react-redux'
 import 'normalize.css/normalize.css'
 import AppRouter from './routers/AppRouter.jsx'
 import configureStore from './store/configureStore.jsx'
@@ -13,7 +14,7 @@ const store = configureStore()
 store.dispatch(addExpense({ description: 'Rent', amount: 666, createdAt: 1234 }))
 store.dispatch(addExpense({ description: 'Water Bill', amount: 45, createdAt: 1234 }))
 store.dispatch(addExpense({ description: 'Electicity Bill', amount: 78, createdAt: 1234 }))
-
+store.dispatch(setTextFilter('water'))
 
 store.subscribe(() => {
   const state = store.getState()
@@ -21,6 +22,15 @@ store.subscribe(() => {
   console.log(visibleExpenses);
 })
 
-store.dispatch(setTextFilter('water'))
+setTimeout(() => {
+  store.dispatch(setTextFilter('rent'))
+}, 3000)
 
-ReactDOM.render(<AppRouter />, document.getElementById('app'))
+const jsx = (
+  // Provider allows us to "provide" a store to all of the components that make up the ap p
+  <Provider store={store}>
+    <AppRouter />
+  </Provider>
+)
+
+ReactDOM.render(jsx, document.getElementById('app'))
