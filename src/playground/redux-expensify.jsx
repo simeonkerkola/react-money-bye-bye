@@ -14,7 +14,7 @@ const addExpense = ({ description = '', note = '', amount = 0, createdAt = 0 } =
 })
 
 // REMOVE_EXPENSE
-const removeExpence = ({ id } = {}) => ({
+const removeExpense = ({ id } = {}) => ({
   type: 'REMOVE_EXPENSE',
   id,
 })

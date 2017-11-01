@@ -14,7 +14,7 @@ const store = configureStore()
 store.dispatch(addExpense({ description: 'Rent', amount: 666, createdAt: 1234 }))
 store.dispatch(addExpense({ description: 'Water Bill', amount: 45, createdAt: 1234 }))
 store.dispatch(addExpense({ description: 'Electicity Bill', amount: 78, createdAt: 1234 }))
-store.dispatch(setTextFilter('water'))
+store.dispatch(setTextFilter(''))
 
 store.subscribe(() => {
   const state = store.getState()
@@ -22,12 +22,12 @@ store.subscribe(() => {
   console.log(visibleExpenses);
 })
 
-setTimeout(() => {
-  store.dispatch(setTextFilter('rent'))
-}, 3000)
+// setTimeout(() => {
+//   store.dispatch(setTextFilter('water'))
+// }, 3000)
 
 const jsx = (
-  // Provider allows us to "provide" a store to all of the components that make up the ap p
+  // Provider allows us to "provide" a store to all of the components that make up the app
   <Provider store={store}>
     <AppRouter />
   </Provider>
