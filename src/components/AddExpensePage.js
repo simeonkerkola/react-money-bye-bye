@@ -1,5 +1,5 @@
 import React from 'react'
-import ExpenseForm from './ExpenseForm.jsx'
+import ExpenseForm from './ExpenseForm.js'
 
 const AddExpensePage = () => (
   <div>

@@ -1,7 +1,7 @@
 const path = require('path')
 
 module.exports = {
-  entry: './src/app.jsx',
+  entry: './src/app.js',
   output: {
     path: path.join(__dirname, 'public'), // where you wanna output the webpack file
     filename: 'bundle.js', // common filename for webpack
@@ -9,7 +9,7 @@ module.exports = {
   module: {
     rules: [{
       loader: 'babel-loader', // use babel
-      test: /\.jsx$/, // look for all *.jsx files
+      test: /\.js$/, // look for all *.js files
       exclude: /node_modules/,
     }, {
       test: /\.s?css$/, // look for both css and scss files

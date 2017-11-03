@@ -1,6 +1,6 @@
-import React from "react"
-import { connect } from "react-redux"
-import { removeExpense } from "../actions/expenses.jsx"
+import React from 'react'
+import { connect } from 'react-redux'
+import { removeExpense } from '../actions/expenses'
 
 const ExpenseListItem = ({ dispatch, id, description, amount, createdAt }) => (
   <div>
@@ -11,7 +11,7 @@ const ExpenseListItem = ({ dispatch, id, description, amount, createdAt }) => (
     <button
       onClick={() => {
         dispatch(removeExpense({ id }))
-        console.log('click');
+        console.log('click')
       }}
     >
       Remove
