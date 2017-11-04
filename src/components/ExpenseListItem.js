@@ -1,23 +1,16 @@
 import React from 'react'
-import { connect } from 'react-redux'
-import { removeExpense } from '../actions/expenses'
+import { Link } from 'react-router-dom'
 
 const ExpenseListItem = ({ dispatch, id, description, amount, createdAt }) => (
   <div>
-    <h3>{description}</h3>
+    <Link to={`/edit/${id}`}>
+      <h3>{description}</h3>
+    </Link>
     <p>
       {amount} - {createdAt}
     </p>
-    <button
-      onClick={() => {
-        dispatch(removeExpense({ id }))
-        console.log('click')
-      }}
-    >
-      Remove
-    </button>
   </div>
 )
 
 // connect() doesn't give any values from the state, just an access to dispatch
-export default connect()(ExpenseListItem)
+export default ExpenseListItem
