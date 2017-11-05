@@ -11,9 +11,10 @@ import './styles/styles.scss'
 
 const store = configureStore()
 
+
 store.dispatch(addExpense({ description: 'Rent', amount: 666, createdAt: -1188899994 }))
-store.dispatch(addExpense({ description: 'Water Bill', amount: 45, createdAt: 666 }))
-store.dispatch(addExpense({ description: 'Electicity Bill', amount: 78, createdAt: 999999999 }))
+store.dispatch(addExpense({ description: 'Water Bill', amount: 45, createdAt: 1509897799000 }))
+store.dispatch(addExpense({ description: 'Electicity Bill', amount: 78, createdAt: 1509667200000 }))
 
 store.subscribe(() => {
   const state = store.getState()
