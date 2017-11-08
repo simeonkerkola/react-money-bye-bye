@@ -10,7 +10,9 @@ export default (expenses, { text, sortBy, startDate, endDate }) =>
       const endDateMatch = endDate
         ? moment(expense.createdAt).isSameOrBefore(endDate, 'day')
         : true
-      const textMatch = expense.description.toLowerCase().includes(text.toLowerCase())
+      const textMatch = text
+        ? expense.description.toLowerCase().includes(text.toLowerCase())
+        : true
 
       // If any of these is false, return is false and
       return startDateMatch && endDateMatch && textMatch
