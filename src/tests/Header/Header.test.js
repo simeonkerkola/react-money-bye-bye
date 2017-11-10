@@ -1,10 +1,14 @@
 import React from 'react'
-import ReactShallowRenderer from 'react-test-renderer/shallow'
+import { shallow } from 'enzyme'
+
+// Use every time when expecting something from enzyme wrapper to get rid of all the junk
+// in snapshot file
+import toJSON from 'enzyme-to-json'
 import Header from '../../components/Header'
 
 test('should render header correctly', () => {
-  const renderer = new ReactShallowRenderer()
-  renderer.render(<Header />)
+  const wrapper = shallow(<Header />)
 
-  expect(renderer.getRenderOutput()).toMatchSnapshot()
+  expect(wrapper.find('h1').length).toBe(1) // Expect to have only one h1 tag
+  expect(toJSON(wrapper)).toMatchSnapshot()
 })
