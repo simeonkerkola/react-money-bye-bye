@@ -1,8 +1,8 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
-// Use every time when expecting something from enzyme wrapper to get rid of all the junk
-// in snapshot file
+// Use enzyme-to-json every time when expecting something from enzyme wrapper to
+// get rid of all the junk in snapshot file
 import toJSON from 'enzyme-to-json'
 import Header from '../../components/Header'
 
