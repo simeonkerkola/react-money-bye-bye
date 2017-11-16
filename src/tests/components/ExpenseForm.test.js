@@ -44,12 +44,22 @@ test('should set note on textarea change', () => {
   expect(wrapper.state('note')).toBe(value)
 })
 
-test('should set description on input change', () => {
-  const value = 'New Description'
+test('should set Amount change if valid input', () => {
+  const value = '666.66'
   const wrapper = shallow(<ExpenseForm />)
   // Match first input
-  wrapper.find('input').at(0).simulate('change', {
+  wrapper.find('input').at(1).simulate('change', {
     target: { value }, // e.target.value
   })
-  expect(wrapper.state('description')).toBe(value)
+  expect(wrapper.state('amount')).toBe(value)
+})
+
+test('should not set Amount change in not valid input', () => {
+  const value = '666.6666'
+  const wrapper = shallow(<ExpenseForm />)
+  // Match first input
+  wrapper.find('input').at(1).simulate('change', {
+    target: { value }, // e.target.value
+  })
+  expect(wrapper.state('amount')).toBe('')
 })
