@@ -16,28 +16,28 @@ export default class ExpenseForm extends React.Component {
       error: '',
     }
   }
-  onDescriptionChange = e => {
+  onDescriptionChange = (e) => {
     const description = e.target.value
     this.setState(() => ({ description }))
   }
-  onNoteChange = e => {
+  onNoteChange = (e) => {
     const note = e.target.value
     this.setState(() => ({ note }))
   }
-  onAmountChange = e => {
+  onAmountChange = (e) => {
     const amount = e.target.value
     if (!amount || amount.match(/^\d*(\.\d{0,2})?$/)) {
       this.setState(() => ({ amount }))
     }
   }
-  onDateChange = createdAt => {
+  onDateChange = (createdAt) => {
     // if (createdAt) prevent the user to select and clear the date field
     if (createdAt) this.setState(() => ({ createdAt }))
   }
   onFocusChange = ({ focused }) => {
     this.setState(() => ({ calendarFocused: focused }))
   }
-  onSubmit = e => {
+  onSubmit = (e) => {
     e.preventDefault()
 
     if (!this.state.description || !this.state.amount) {
@@ -63,7 +63,6 @@ export default class ExpenseForm extends React.Component {
             placeholder="Description"
             value={this.state.description}
             onChange={this.onDescriptionChange}
-            autoFocus
           />
           <input
             type="text"
