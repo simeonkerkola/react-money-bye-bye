@@ -207,7 +207,7 @@ exports[`should render ExpenseForm with expense data 1`] = `
       onChange={[Function]}
       placeholder="Add a note"
       rows="4"
-      value="Rent"
+      value=""
     />
     <button>
       Add Expense
