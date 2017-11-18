@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { editExpense, removeExpense } from '../actions/expenses'
 import ExpenseForm from './ExpenseForm'
 
-export class EditExpencePage extends React.Component {
+export class EditExpensePage extends React.Component {
   onSubmit = (expense) => {
     this.props.editExpense(this.props.expense.id, expense)
     this.props.history.push('/') // throw user to dashboard page
@@ -32,4 +32,4 @@ const mapDispatchToProps = dispatch => ({
   removeExpense: id => dispatch(removeExpense(id)),
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(EditExpencePage)
+export default connect(mapStateToProps, mapDispatchToProps)(EditExpensePage)
