@@ -8,7 +8,7 @@ export class EditExpensePage extends React.Component {
     this.props.editExpense(this.props.expense.id, expense)
     this.props.history.push('/') // throw user to dashboard page
   }
-  onClick = () => {
+  onRemove = () => {
     this.props.removeExpense({ id: this.props.expense.id })
     this.props.history.push('/')
   }
@@ -17,7 +17,7 @@ export class EditExpensePage extends React.Component {
     return (
       <div>
         <ExpenseForm expense={this.props.expense} onSubmit={this.onSubmit} />
-        <button onClick={this.onClick}>Remove</button>
+        <button onClick={this.onRemove}>Remove</button>
       </div>
     )
   }
@@ -26,8 +26,7 @@ export class EditExpensePage extends React.Component {
 const mapStateToProps = (state, props) => ({
   expense: state.expenses.find(expense => expense.id === props.match.params.id),
 })
-
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch) => ({
   editExpense: (id, changes) => dispatch(editExpense(id, changes)),
   removeExpense: id => dispatch(removeExpense(id)),
 })
