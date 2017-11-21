@@ -7,22 +7,22 @@ import 'normalize.css/normalize.css'
 import AppRouter from './routers/AppRouter'
 import configureStore from './store/configureStore'
 import { addExpense } from './actions/expenses'
-import { setTextFilter } from './actions/filters'
 import getVisibleExpenses from './selectors/expenses'
 import './styles/styles.scss'
 
 const store = configureStore()
 
+console.log('testing');
 
-store.dispatch(addExpense({ description: 'Rent', amount: 666, createdAt: -1188899994 }))
-store.dispatch(addExpense({ description: 'Water Bill', amount: 45, createdAt: 1509897799000 }))
-store.dispatch(addExpense({ description: 'Electicity Bill', amount: 78, createdAt: 1509667200000 }))
+// store.dispatch(addExpense({ description: 'Rent', amount: 666, createdAt: -1188899994 }))
+// store.dispatch(addExpense({ description: 'Water Bill', amount: 45, createdAt: 1509897799000 }))
+// store.dispatch(addExpense({ description: 'Electicity Bill', amount: 78, createdAt: 1509667200000 }))
 
-store.subscribe(() => {
-  const state = store.getState()
-  const visibleExpenses = getVisibleExpenses(state.expenses, state.filters)
-  console.log(visibleExpenses)
-})
+// store.subscribe(() => {
+//   const state = store.getState()
+//   const visibleExpenses = getVisibleExpenses(state.expenses, state.filters)
+//   console.log('testing')
+// })
 
 // setTimeout(() => {
 //   store.dispatch(setTextFilter('water'))
