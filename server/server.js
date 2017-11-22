@@ -11,6 +11,6 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(publicPath, 'index.html')) // serve index.html every time we get a 404
 })
 
-app.listen(3000, () => {
+app.listen(port, () => {
   console.log('Running on a port', port);
 })
