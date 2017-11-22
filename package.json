@@ -1,6 +1,9 @@
 {
   "name": "expensify",
   "version": "0.1.10",
+  "engines": {
+  "node": "8.6.0"
+},
   "main": "server/server.js",
   "license": "MIT",
   "scripts": {
