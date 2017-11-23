@@ -2,10 +2,7 @@ node_modules/
 server.log
 .eslintrc.js
 .eslintr.js
-public/bundle.js
-public/bundle.js.map
-public/styles.css
-public/styles.css.js
+public/dist
 
 ### Node ###
 

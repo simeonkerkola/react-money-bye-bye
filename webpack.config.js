@@ -8,7 +8,7 @@ module.exports = (env) => {
   return {
     entry: './src/app.js',
     output: {
-      path: path.join(__dirname, 'public'), // where you wanna output the webpack file
+      path: path.join(__dirname, 'public', 'dist'), // where you wanna output the webpack file
       filename: 'bundle.js', // common filename for webpack
     },
     module: {
@@ -46,6 +46,7 @@ module.exports = (env) => {
     devServer: {
       contentBase: path.join(__dirname, 'public'), // watch public folder
       historyApiFallback: true, // tells dev-server we r handling routing via client side code (serve index.html every time we get a 404)
+      publicPath: '/dist/'
     },
   }
 }
