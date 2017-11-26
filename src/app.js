@@ -12,11 +12,9 @@ import './styles/styles.scss'
 
 const store = configureStore()
 
-console.log('testing');
-
-// store.dispatch(addExpense({ description: 'Rent', amount: 666, createdAt: -1188899994 }))
-store.dispatch(addExpense({ description: 'Water Bill', amount: 45, createdAt: 1509897799000 }))
-// store.dispatch(addExpense({ description: 'Electicity Bill', amount: 78, createdAt: 1509667200000 }))
+store.dispatch(addExpense({ description: 'Rent', amount: 666.34, createdAt: 1509397799000 }))
+store.dispatch(addExpense({ description: 'Water Bill', amount: 45.22, createdAt: 1509897799000 }))
+store.dispatch(addExpense({ description: 'Electicity Bill', amount: 78.23, createdAt: 1509667200000 }))
 
 // store.subscribe(() => {
 //   const state = store.getState()
