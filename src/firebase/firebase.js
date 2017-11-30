@@ -13,26 +13,56 @@ firebase.initializeApp(config)
 
 const database = firebase.database()
 
-database.ref().set({
-  name: 'Simi',
-  age: 26,
-  hasEaten: false,
-  location: {
-    city: 'Stadi',
-    country: 'Härmä',
-  },
-})
-// database.ref().set('This is my data')
-database.ref('age').set(22)
-database.ref('location/city').set('Hesa')
-database
-  .ref('attr')
-  .set({ height: 666 })
-  .then(() => {
-    console.log('Height updated')
-  })
-  .catch((err) => {
-    console.log('Couldn update :(', err)
-  })
+// database.ref('expenses').on('child_removed', (snapshot) => {
+//   console.log(snapshot.key, 'Removed', snapshot.val())
+// })
+//
+// database.ref('expenses').on('child_changed', (snapshot) => {
+//   console.log(snapshot.key, 'Changed', snapshot.val());
+// })
+//
+// database.ref('expenses').on('child_added', (snapshot) => {
+//   console.log(snapshot.key, 'Added', snapshot.val());
+// })
 
-console.log('I made changes to data')
+// database.ref('expenses').on('value', (snapshot) => {
+//   const expenses = []
+//
+//   snapshot.forEach((child) => {
+//     expenses.push({
+//       id: child.key,
+//       ...child.val(),
+//     })
+//   })
+//   console.log(expenses)
+// })
+//
+// setTimeout(() => {
+//   database.ref('expenses').push({
+//     description: 'Something expensive',
+//     note: '',
+//     amount: 45345555,
+//   })
+// }, 3000)
+
+// Preparing data for Redux
+// database
+//   .ref('expenses')
+//   .once('value')
+//   .then((snapshot) => {
+//     const expenses = []
+//
+//     snapshot.forEach((childSnapshot) => {
+//       expenses.push({
+//         id: childSnapshot.key, // Value of automatically created id
+//         ...childSnapshot.val(), // Get everything else as well
+//       })
+//     })
+//     console.log(expenses);
+//   })
+
+// database.ref('expenses').push({
+//   description: 'Rent',
+//   amount: 666,
+//   note: 'paid full'
+// })
