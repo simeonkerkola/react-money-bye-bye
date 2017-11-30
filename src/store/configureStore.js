@@ -3,7 +3,7 @@ import thunk from 'redux-thunk'
 import expensesReducer from '../reducers/expenses'
 import filtersReducer from '../reducers/filters'
 
-const composeEnchansers = window.__REDUX_DEVTOOLS_EXTENSION__COMPOSE__ || compose
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 
 export default () => {
   // Store creation
@@ -15,7 +15,7 @@ export default () => {
       expenses: expensesReducer,
       filters: filtersReducer,
     }),
-    composeEnchansers(applyMiddleware(thunk)),
+    composeEnhancers(applyMiddleware(thunk)),
   )
 
   return store
