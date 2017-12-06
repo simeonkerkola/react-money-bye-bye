@@ -1,12 +1,12 @@
 import * as firebase from 'firebase' // takes all named exports from firebase, use like firebase.anyMethod
 
 const config = {
-  apiKey: 'AIzaSyA1aGkbCCri3JAm1IIxzt61ibPOfPGoAmQ',
-  authDomain: 'expensify-7781a.firebaseapp.com',
-  databaseURL: 'https://expensify-7781a.firebaseio.com',
-  projectId: 'expensify-7781a',
-  storageBucket: 'expensify-7781a.appspot.com',
-  messagingSenderId: '461278143099',
+  apiKey: process.env.FIREBASE_API_KEY,
+  authDomain: process.env.FIREBASE_AUTH_DOMAIN,
+  databaseURL: process.env.FIREBASE_DATABASE_URL,
+  projectId: process.env.FIREBASE_PROJECT_ID,
+  storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID,
 }
 
 firebase.initializeApp(config)
