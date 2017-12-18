@@ -1,7 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Should render LoginPage correctly 1`] = `
-<p>
-  Login please
-</p>
+<div>
+  <p>
+    Login please
+  </p>
+  <button>
+    Log in
+  </button>
+</div>
 `;
