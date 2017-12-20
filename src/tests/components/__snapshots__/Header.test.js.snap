@@ -16,7 +16,7 @@ exports[`should render header correctly 1`] = `
   <NavLink
     activeClassName="is-active"
     ariaCurrent="true"
-    to="/dasboard"
+    to="/dashboard"
   >
     Dashboard
   </NavLink>

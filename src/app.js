@@ -4,7 +4,7 @@ import 'react-dates/initialize'
 import 'react-dates/lib/css/_datepicker.css'
 import { Provider } from 'react-redux'
 import 'normalize.css/normalize.css'
-import AppRouter from './routers/AppRouter'
+import AppRouter, { history } from './routers/AppRouter'
 import configureStore from './store/configureStore'
 import { addExpense, startSetExpenses } from './actions/expenses'
 import getVisibleExpenses from './selectors/expenses'
@@ -15,7 +15,9 @@ const store = configureStore()
 
 store.dispatch(addExpense({ description: 'Rent', amount: 666.34, createdAt: 1509397799000 }))
 store.dispatch(addExpense({ description: 'Water Bill', amount: 45.22, createdAt: 1509897799000 }))
-store.dispatch(addExpense({ description: 'Electicity Bill', amount: 78.23, createdAt: 1509667200000 }))
+store.dispatch(
+  addExpense({ description: 'Electicity Bill', amount: 78.23, createdAt: 1509667200000 }),
+)
 
 // store.subscribe(() => {
 //   const state = store.getState()
@@ -34,16 +36,30 @@ const jsx = (
   </Provider>
 )
 
-ReactDOM.render(<p>Loading...</p>, document.getElementById('app'))
+// We don't wanna render the whole page again when user clicks login
+let hasRendered = false
+const renderApp = () => {
+  if (!hasRendered) {
+    ReactDOM.render(jsx, document.getElementById('app'))
+    hasRendered = true
+    console.log('Loggin in');
+  }
+}
 
-store.dispatch(startSetExpenses()).then(() => {
-  ReactDOM.render(jsx, document.getElementById('app'))
-})
+ReactDOM.render(<p>Loading...</p>, document.getElementById('app'))
 
 firebase.auth().onAuthStateChanged((user) => {
   if (user) {
-    console.log('Log in');
+    console.log('Logged in');
+    store.dispatch(startSetExpenses()).then(() => {
+      renderApp()
+
+      // Throw user from front page to the dashboard
+      if (history.location.pathname === '/') history.push('dashboard')
+    })
   } else {
-    console.log('Log out');
+    console.log('Logged out')
+    renderApp()
+    history.push('/') // Throws user to the front page
   }
 })
