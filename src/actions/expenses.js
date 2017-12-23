@@ -9,12 +9,13 @@ export const addExpense = expense => ({
 
 export const startAddExpense = (expenseData = {}) =>
   // Returning a function on Redux wouldn't work on default, need redux-thunk
-  (dispatch) => {
+  (dispatch, getState) => {
+    const uid = getState().auth.uid
     const { description = '', note = '', amount = 0, createdAt = 0 } = expenseData // Destructure from expenseData
     const expense = { description, note, amount, createdAt }
 
     return database
-      .ref('expenses')
+      .ref(`users/${uid}/expenses`)
       .push(expense)
       .then((ref) => {
         dispatch(
@@ -32,14 +33,16 @@ export const removeExpense = ({ id } = {}) => ({
   id,
 })
 
-export const startRemoveExpense = ({ id }) => dispatch =>
-  database
-    .ref(`expenses/${id}`)
+export const startRemoveExpense = ({ id }) => (dispatch, getState) => {
+  const uid = getState().auth.uid
+  return database
+    .ref(`users/${uid}/expenses/${id}`)
     .remove()
     .then(() => {
       dispatch(removeExpense({ id }))
     })
     .catch(err => console.log(err.message))
+}
 
 // EDIT_EXPENSE
 export const editExpense = (id, updates) => ({
@@ -48,12 +51,14 @@ export const editExpense = (id, updates) => ({
   updates,
 })
 
-export const startEditExpense = (id, updates) => dispatch =>
-  database
-    .ref(`expenses/${id}`)
+export const startEditExpense = (id, updates) => (dispatch, getState) => {
+  const uid = getState().auth.uid
+  return database
+    .ref(`users/${uid}/expenses/${id}`)
     .update(updates)
     .then(() => dispatch(editExpense(id, updates)))
     .catch(err => console.log(err.message))
+}
 
 // SET_EXPENSES
 export const setExpenses = expenses => ({
@@ -61,9 +66,10 @@ export const setExpenses = expenses => ({
   expenses,
 })
 
-export const startSetExpenses = () => dispatch =>
-  database
-    .ref('expenses')
+export const startSetExpenses = () => (dispatch, getState) => {
+  const uid = getState().auth.uid
+  return database
+    .ref(`users/${uid}/expenses`)
     .once('value')
     .then((snapshot) => {
       const expenses = []
@@ -75,3 +81,4 @@ export const startSetExpenses = () => dispatch =>
       })
       dispatch(setExpenses(expenses))
     })
+}
