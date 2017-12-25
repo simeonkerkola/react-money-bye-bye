@@ -1,0 +1,22 @@
+.header {
+  background: #71a6d4;
+}
+
+.header__actions {
+  display: flex;
+  margin-left: auto;
+}
+
+.header__content {
+  align-items: center;
+  display: flex;
+  padding: $s-size 0;
+}
+
+.header__title {
+  color: #fff;
+  text-decoration: none;
+  h1 {
+    margin: 0;
+  }
+}
