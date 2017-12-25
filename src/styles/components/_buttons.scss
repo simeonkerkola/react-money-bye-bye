@@ -1,0 +1,16 @@
+.btn {
+  border: none;
+  padding: $s-size;
+  border-radius: 3px;
+  font-size: $font-size-large;
+  font-weight: 300;
+}
+
+.btn--login {
+  background-color: $blue-jeans;
+  color: #fff;
+
+  &:hover {
+    background-color: darken($blue-jeans, 2%);
+  }
+}
