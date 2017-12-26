@@ -1,16 +1,25 @@
 .header {
-  background: #71a6d4;
+  background: #355d81;
+  padding: 0;
 }
 
 .header__actions {
   display: flex;
+
   margin-left: auto;
+  a {
+    padding: $m-size;
+
+  }
+}
+
+.header__actions__item {
 }
 
 .header__content {
   align-items: center;
   display: flex;
-  padding: $s-size 0;
+  padding: 0;
 }
 
 .header__title {
