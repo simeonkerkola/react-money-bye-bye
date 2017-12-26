@@ -5,15 +5,15 @@
 
 .header__actions {
   display: flex;
-
   margin-left: auto;
   a {
     padding: $m-size;
-
   }
 }
 
 .header__actions__item {
+  background: none;
+  color: #fff;
 }
 
 .header__content {
@@ -25,7 +25,4 @@
 .header__title {
   color: #fff;
   text-decoration: none;
-  h1 {
-    margin: 0;
-  }
 }

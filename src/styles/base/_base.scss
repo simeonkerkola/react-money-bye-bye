@@ -4,6 +4,7 @@ html {
 
 h1 {
   font-weight: 400;
+  margin: 0;
 }
 
 body {
@@ -21,9 +22,4 @@ button {
 
 button:disabled {
   cursor: default;
-}
-
-.is-active {
-  font-weight: bold;
-  color: goldenrod;
 }
