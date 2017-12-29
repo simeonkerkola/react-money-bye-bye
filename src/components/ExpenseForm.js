@@ -10,7 +10,7 @@ export default class ExpenseForm extends React.Component {
     this.state = {
       description: props.expense ? props.expense.description : '',
       note: props.expense ? props.expense.note : '',
-      amount: props.expense ? (props.expense.amount).toString() : '',
+      amount: props.expense ? props.expense.amount.toString() : '',
       createdAt: props.expense ? moment(props.expense.createdAt) : moment(),
       calendarFocused: false,
       error: '',
@@ -55,42 +55,42 @@ export default class ExpenseForm extends React.Component {
 
   render() {
     return (
-      <div>
-        {this.state.error && <p className="error-message">{this.state.error}</p>}
-        <form onSubmit={this.onSubmit}>
-          <input
-            type="text"
-            className="text-input"
-            placeholder="Description"
-            value={this.state.description}
-            onChange={this.onDescriptionChange}
-          />
-          <input
-            type="text"
-            className="text-input"
-            placeholder="Amount"
-            value={this.state.amount}
-            onChange={this.onAmountChange}
-          />
-          <SingleDatePicker
-            date={this.state.createdAt}
-            onDateChange={this.onDateChange}
-            focused={this.state.calendarFocused}
-            onFocusChange={this.onFocusChange}
-            numberOfMonths={1}
-            isOutsideRange={() => false} // Make it possible to pick dates from the past
-          />
-          <textarea
-            className="text-area"
-            cols="30"
-            rows="4"
-            placeholder="Add a note"
-            value={this.state.note}
-            onChange={this.onNoteChange}
-          />
-          <button>Add Expense</button>
-        </form>
-      </div>
+      <form className="form" onSubmit={this.onSubmit}>
+        {this.state.error && <p className="form__error">{this.state.error}</p>}
+        <input
+          type="text"
+          className="text-input"
+          placeholder="Description"
+          value={this.state.description}
+          onChange={this.onDescriptionChange}
+        />
+        <input
+          type="text"
+          className="text-input"
+          placeholder="Amount"
+          value={this.state.amount}
+          onChange={this.onAmountChange}
+        />
+        <SingleDatePicker
+          date={this.state.createdAt}
+          onDateChange={this.onDateChange}
+          focused={this.state.calendarFocused}
+          onFocusChange={this.onFocusChange}
+          numberOfMonths={1}
+          isOutsideRange={() => false} // Make it possible to pick dates from the past
+        />
+        <textarea
+          className="text-area"
+          cols="30"
+          rows="4"
+          placeholder="Add a note"
+          value={this.state.note}
+          onChange={this.onNoteChange}
+        />
+        <div>
+          <button className="btn btn--primary">Save Expense</button>
+        </div>
+      </form>
     )
   }
 }

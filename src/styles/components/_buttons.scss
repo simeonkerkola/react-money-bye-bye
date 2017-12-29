@@ -17,3 +17,12 @@
     background-color: darken($blue-jeans, 2%);
   }
 }
+
+.btn--secondary {
+  background-color: $slush-grey;
+  color: #fff;
+
+  &:hover {
+    background-color: darken($slush-grey, 2%);
+  }
+}
