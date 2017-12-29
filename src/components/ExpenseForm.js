@@ -60,12 +60,14 @@ export default class ExpenseForm extends React.Component {
         <form onSubmit={this.onSubmit}>
           <input
             type="text"
+            className="text-input"
             placeholder="Description"
             value={this.state.description}
             onChange={this.onDescriptionChange}
           />
           <input
             type="text"
+            className="text-input"
             placeholder="Amount"
             value={this.state.amount}
             onChange={this.onAmountChange}
@@ -79,6 +81,7 @@ export default class ExpenseForm extends React.Component {
             isOutsideRange={() => false} // Make it possible to pick dates from the past
           />
           <textarea
+            className="text-area"
             cols="30"
             rows="4"
             placeholder="Add a note"
