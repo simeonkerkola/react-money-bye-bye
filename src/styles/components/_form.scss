@@ -1,0 +1,13 @@
+.form {
+  display: flex; // doesn't strech the button cause it's inside a div
+  flex-direction: column;
+  > * { // all childer of form
+    margin-bottom: $m-size;
+    max-width: 40rem;
+  }
+}
+
+.form__error {
+  margin: 0 0 $m-size 0; /* top | right | bottom | left */
+  font-style: italic;
+}
