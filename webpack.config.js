@@ -16,7 +16,7 @@ module.exports = (env) => {
   const CSSExtract = new ExtractTextPlugin('styles.css')
 
   return {
-    entry: './src/app.js',
+    entry: ['babel-polyfill', './src/app.js'], // babel-polyfill first to add support for older browsers
     output: {
       path: path.join(__dirname, 'public', 'dist'), // where you wanna output the webpack file
       filename: 'bundle.js', // common filename for webpack
