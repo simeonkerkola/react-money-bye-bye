@@ -44,7 +44,6 @@ const renderApp = () => {
   if (!hasRendered) {
     ReactDOM.render(jsx, document.getElementById('app'))
     hasRendered = true
-    console.log('Loggin in');
   }
 }
 
@@ -52,7 +51,6 @@ ReactDOM.render(<LoadingPage />, document.getElementById('app'))
 
 firebase.auth().onAuthStateChanged((user) => {
   if (user) {
-    console.log('Logged in');
     store.dispatch(login(user.uid))
     store.dispatch(startSetExpenses()).then(() => {
       renderApp()
@@ -61,7 +59,6 @@ firebase.auth().onAuthStateChanged((user) => {
       if (history.location.pathname === '/') history.push('/dashboard')
     })
   } else {
-    console.log('Logged out')
     store.dispatch(logout())
     renderApp()
     history.push('/') // Throws user to the front page
