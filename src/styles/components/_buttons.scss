@@ -1,6 +1,6 @@
 .btn {
   border: none;
-  border-radius: 3px;
+  border-radius: 5px;
   display: inline-block;
   font-size: $font-size-large;
   font-weight: 300;
@@ -25,11 +25,6 @@
   &:hover {
     background-color: darken($slush-grey, 2%);
   }
-}
-
-.btn--modal {
-  padding: $s-size $l-size;
-  margin: 0 $s-size;
 }
 
 .btn--positive {

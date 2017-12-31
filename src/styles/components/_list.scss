@@ -1,3 +1,5 @@
+
+
 .list-header {
   background: $off-white;
   border: 1px solid darken($off-white, 10%);
@@ -7,11 +9,19 @@
   padding: $s-size $m-size;
 }
 
-.list-body {
+.list-footer {
+  @extend .list-header;
+  border-top: none;
+  color: $dark-grey;
+  font-size: $font-size-large;
+  font-weight: 400;
   margin-bottom: $m-size;
   @media (min-width: $desktop-breakpoint) {
     margin-bottom: $l-size;
   }
+}
+
+.list-body {
 }
 
 .list-item {

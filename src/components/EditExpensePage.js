@@ -7,7 +7,7 @@ import RemoveExpenseModal from './RemoveExpenseModal'
 
 export class EditExpensePage extends React.Component {
   state = {
-    removableExpense: undefined,
+    readyToBeRemoved: undefined,
   }
   onSubmit = (expense) => {
     this.props.startEditExpense(this.props.expense.id, expense)
@@ -20,13 +20,12 @@ export class EditExpensePage extends React.Component {
   }
 
   onCloseModal = () => {
-    this.setState(() => ({ removableExpense: undefined }))
+    this.setState(() => ({ readyToBeRemoved: undefined }))
   }
 
   askToRemove = (expense) => {
-    this.setState(() => ({ removableExpense: this.props.expense }))
+    this.setState(() => ({ readyToBeRemoved: true }))
   }
-
   render() {
     return (
       <div>
@@ -42,7 +41,7 @@ export class EditExpensePage extends React.Component {
           </button>
         </div>
         <RemoveExpenseModal
-          removableExpense={this.state.removableExpense}
+          readyToBeRemoved={this.state.readyToBeRemoved}
           closeModal={this.onCloseModal}
           expense={this.props.expense}
           onRemove={this.onRemove}

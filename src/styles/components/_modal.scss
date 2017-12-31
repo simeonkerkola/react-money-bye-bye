@@ -29,7 +29,7 @@
 }
 
 .modal__title {
-  margin: 0 0 $m-size 0; // largin bottom large
+  margin: 0 0 $m-size 0; // bottom large
 }
 
 .modal__body {
@@ -37,4 +37,10 @@
   font-weight: 300;
   margin: 0 0 $m-size 0; // largin bottom large
   word-break: break-all; // break really long words
+}
+
+.modal__btn {
+  border: 1px solid $dark-grey;
+  margin: $m-size $s-size .5rem $s-size;
+  padding: $s-size $l-size;
 }

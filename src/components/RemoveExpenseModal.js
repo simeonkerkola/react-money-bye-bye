@@ -4,20 +4,22 @@ import moment from 'moment'
 
 const RemoveExpenseModal = props => (
   <Modal
-    isOpen={!!props.removableExpense} // !! converts string to true, and undef to false
+    isOpen={!!props.readyToBeRemoved} // !! converts string to true, and undef to false
     onRequestClose={props.closeModal} // close the modal w/ esc
     contentLabel="Remove Expense"
     closeTimeoutMS={200}
     className="modal"
   >
-    <h3>Are you sure you want to remove this expense?</h3>
-    <p>
-      {props.expense.description}, {props.expense.amount}€, {moment(props.expense.createdAt).format('Do MMM YY')}
-    </p>
-    <button className="btn btn--modal btn--negative" onClick={props.closeModal}>
+    <h3 className="modal__title">Are you sure you want to remove this expense?</h3>
+    <div className="modal__body">
+      <p>
+        {props.expense.description}, {props.expense.amount}€
+      </p>
+    </div>
+    <button className="modal__btn btn btn--negative" onClick={props.closeModal}>
       No
     </button>
-    <button className="btn btn--modal btn--positive" onClick={props.onRemove}>
+    <button className="modal__btn btn btn--positive" onClick={props.onRemove}>
       Yes
     </button>
   </Modal>

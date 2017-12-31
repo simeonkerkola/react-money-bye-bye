@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import ExpenseListItem from './ExpenseListItem'
 import selectExpenses from '../selectors/expenses'
+import selectExpensesTotal from '../selectors/expenses-total'
 
 export const ExpenseList = props => (
   <div className="content-container">
@@ -19,11 +20,21 @@ export const ExpenseList = props => (
         props.expenses.map(expense => <ExpenseListItem key={expense.id} {...expense} />)
       )}
     </div>
+    <div className="list-footer">
+      <div className="show-for-mobile">{props.expenseCount} expenses make {props.expensesTotal}€</div>
+      <div className="show-for-desktop">{props.expenseCount}</div>
+      <div className="show-for-desktop">{props.expensesTotal}€</div>
+    </div>
   </div>
 )
 
-const mapStateToProps = state => ({
-  expenses: selectExpenses(state.expenses, state.filters),
-})
+const mapStateToProps = (state) => {
+  const visibleExpenses = selectExpenses(state.expenses, state.filters)
+  return {
+    expenses: selectExpenses(state.expenses, state.filters),
+    expenseCount: visibleExpenses.length,
+    expensesTotal: selectExpensesTotal(visibleExpenses).toFixed(2),
+  }
+}
 
 export default connect(mapStateToProps)(ExpenseList)
