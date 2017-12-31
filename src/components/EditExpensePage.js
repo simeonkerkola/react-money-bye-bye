@@ -1,16 +1,30 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import Modal from 'react-modal'
 import { startEditExpense, startRemoveExpense } from '../actions/expenses'
 import ExpenseForm from './ExpenseForm'
+import RemoveExpenseModal from './RemoveExpenseModal'
 
 export class EditExpensePage extends React.Component {
+  state = {
+    removableExpense: undefined,
+  }
   onSubmit = (expense) => {
     this.props.startEditExpense(this.props.expense.id, expense)
     this.props.history.push('/') // throw user to dashboard page
   }
+
   onRemove = () => {
     this.props.startRemoveExpense({ id: this.props.expense.id })
     this.props.history.push('/')
+  }
+
+  onCloseModal = () => {
+    this.setState(() => ({ removableExpense: undefined }))
+  }
+
+  askToRemove = (expense) => {
+    this.setState(() => ({ removableExpense: this.props.expense }))
   }
 
   render() {
@@ -23,10 +37,16 @@ export class EditExpensePage extends React.Component {
         </div>
         <div className="content-container">
           <ExpenseForm expense={this.props.expense} onSubmit={this.onSubmit} />
-          <button className="btn btn--secondary" onClick={this.onRemove}>
+          <button className="btn btn--secondary" onClick={this.askToRemove}>
             Remove
           </button>
         </div>
+        <RemoveExpenseModal
+          removableExpense={this.state.removableExpense}
+          closeModal={this.onCloseModal}
+          expense={this.props.expense}
+          onRemove={this.onRemove}
+        />
       </div>
     )
   }
