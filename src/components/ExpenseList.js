@@ -11,6 +11,7 @@ export const ExpenseList = props => (
       <div className="show-for-desktop">Expense</div>
       <div className="show-for-desktop">Amount</div>
     </div>
+
     <div className="list-body">
       {props.expenses.length === 0 ? (
         <div className="list-item list-item--message">
@@ -20,11 +21,16 @@ export const ExpenseList = props => (
         props.expenses.map(expense => <ExpenseListItem key={expense.id} {...expense} />)
       )}
     </div>
-    <div className="list-footer">
-      <div className="show-for-mobile">{props.expenseCount} expenses make {props.expensesTotal}€</div>
-      <div className="show-for-desktop">{props.expenseCount}</div>
-      <div className="show-for-desktop">{props.expensesTotal}€</div>
-    </div>
+
+    {props.expenses.length > 0 && (
+      <div className="list-footer">
+        <div className="show-for-mobile">
+          {props.expenseCount} in total make {props.expensesTotal}€
+        </div>
+        <div className="show-for-desktop">Total: {props.expenseCount}</div>
+        <div className="show-for-desktop">{props.expensesTotal}€</div>
+      </div>
+    )}
   </div>
 )
 
