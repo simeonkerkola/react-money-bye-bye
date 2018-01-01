@@ -1,6 +1,6 @@
 # Expensify
 
-##An app to track your spending.
+## An app to track your spending.
 
 **Live demo: million-bucks.herokuapp.com**
 
