@@ -2,7 +2,7 @@
 
 ## An app to track your spending.
 
-**Live demo: million-bucks.herokuapp.com**
+**Live demo: https://million-bucks.herokuapp.com/**
 
 ### Installation:
 * Clone repo ```$ git clone https://github.com/sssmi/react-money-bye-bye```
