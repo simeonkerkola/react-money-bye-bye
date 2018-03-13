@@ -12,8 +12,12 @@ export const Header = ({ startLogout }) => (
           <h1>Expensify</h1>
         </Link>
         <div className="header__actions">
-          <NavLink className="btn header__actions__item" to="/help" activeClassName="is-active">Help</NavLink>
-          <button className="btn header__actions__item" onClick={startLogout}>Logout</button>
+          <NavLink className="btn header__actions__item" to="/help" activeClassName="is-active">
+            Help
+          </NavLink>
+          <button className="btn header__actions__item" onClick={startLogout}>
+            Logout
+          </button>
         </div>
       </div>
     </div>

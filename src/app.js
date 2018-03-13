@@ -6,20 +6,13 @@ import { Provider } from 'react-redux'
 import 'normalize.css/normalize.css'
 import AppRouter, { history } from './routers/AppRouter'
 import configureStore from './store/configureStore'
-import { addExpense, startSetExpenses } from './actions/expenses'
-import getVisibleExpenses from './selectors/expenses'
+import { startAddExpense, startSetExpenses } from './actions/expenses'
 import './styles/styles.scss'
 import { firebase } from './firebase/firebase'
 import { login, logout } from './actions/auth'
 import LoadingPage from './components/LoadingPage'
 
 const store = configureStore()
-
-// store.dispatch(addExpense({ description: 'Rent', amount: 666.34, createdAt: 1509397799000 }))
-// store.dispatch(addExpense({ description: 'Water Bill', amount: 45.22, createdAt: 1509897799000 }))
-// store.dispatch(
-//   addExpense({ description: 'Electicity Bill', amount: 78.23, createdAt: 1509667200000 }),
-// )
 
 // store.subscribe(() => {
 //   const state = store.getState()
@@ -54,6 +47,25 @@ firebase.auth().onAuthStateChanged((user) => {
     store.dispatch(login(user.uid))
     store.dispatch(startSetExpenses()).then(() => {
       renderApp()
+
+      // Add some stock data for Anonymous users
+      if (user.isAnonymous) {
+        store.dispatch(startAddExpense({ description: 'Rent', amount: 666, createdAt: Date.now() }))
+        store.dispatch(
+          startAddExpense({
+            description: 'Groceries',
+            amount: 15.2,
+            createdAt: Date.now() - 604800000,
+          }),
+        )
+        store.dispatch(
+          startAddExpense({
+            description: 'Water Bil',
+            amount: 22.22,
+            createdAt: Date.now() - 1004800000,
+          }),
+        )
+      }
 
       // Throw user from front page to the dashboard
       if (history.location.pathname === '/') history.push('/dashboard')
