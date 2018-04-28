@@ -60,7 +60,7 @@ firebase.auth().onAuthStateChanged((user) => {
         )
         store.dispatch(
           startAddExpense({
-            description: 'Water Bil',
+            description: 'Water Bill',
             amount: 22.22,
             createdAt: Date.now() - 1004800000,
           }),

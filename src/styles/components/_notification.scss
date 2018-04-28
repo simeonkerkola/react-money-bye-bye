@@ -1,0 +1,8 @@
+.notification {
+  align-self: center;
+  background-color: lighten(#e46764, 20);
+  border-radius: 5px;
+  display: inline-block;
+  margin-top: $l-size;
+  padding: $m-size;
+}

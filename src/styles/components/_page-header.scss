@@ -1,10 +1,19 @@
 .page-header {
   background: $off-white;
+}
+
+.page-header__content {
+
   margin-bottom: $l-size;
   padding: $l-size 0;
 }
 
 .page-header__actions {
+  align-items: flex-start;
+
+
+  display: flex;
+  flex-direction: column;
   margin-top: $m-size;
 }
 
