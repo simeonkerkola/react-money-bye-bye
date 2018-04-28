@@ -5,8 +5,10 @@
   font-size: $font-size-large;
   font-weight: 300;
   line-height: 1;
+  outline: none;
   padding: $s-size;
   text-decoration: none;
+  transition: all .2s;
 }
 
 .btn--primary {
@@ -27,12 +29,13 @@
   }
 }
 
-.btn--positive {
-  background-color: $green;
-  color: #fff;
+.btn--quiet {
+  background-color: transparent;
+  color: currentColor;
 
   &:hover {
-    background-color: darken($green, 2%);
+    // To animate, I'm faking the border ;)
+    box-shadow: 0 0 0 1px currentColor;
   }
 }
 

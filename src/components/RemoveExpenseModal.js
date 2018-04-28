@@ -16,10 +16,10 @@ const RemoveExpenseModal = props => (
         {props.expense.description}, {props.expense.amount}€
       </p>
     </div>
-    <button className="modal__btn btn btn--negative" onClick={props.closeModal}>
+    <button className="modal__btn btn btn--quiet" onClick={props.closeModal}>
       No
     </button>
-    <button className="modal__btn btn btn--positive" onClick={props.onRemove}>
+    <button className="modal__btn btn btn--negative" onClick={props.onRemove}>
       Yes
     </button>
   </Modal>
