@@ -4,9 +4,11 @@ import { firebase } from '../firebase/firebase'
 const Notification = () => {
   const user = firebase.auth().currentUser
   return (
-    <div className="notification">
+    <div>
       {user.isAnonymous && (
-        <div>You are logged in as anonymous, clicking Logout will remove all your saved data</div>
+        <div className="notification">
+          You are logged in as Anonymous, clicking Logout will remove all your saved data
+        </div>
       )}
     </div>
   )
