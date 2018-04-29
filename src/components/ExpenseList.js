@@ -18,7 +18,8 @@ export const ExpenseList = props => (
           <span>No expenses</span>
         </div>
       ) : (
-        props.expenses.map(expense => <ExpenseListItem key={expense.id} {...expense} />)
+        (console.log('props.expenses', props.expenses),
+          props.expenses.map(expense => <ExpenseListItem key={expense.id} {...expense} />))
       )}
     </div>
 

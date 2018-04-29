@@ -12,6 +12,7 @@
 
 .text-input__search-box {
   @extend .text-input;
+  flex: 1 1 41%;
 }
 
 .text-area {

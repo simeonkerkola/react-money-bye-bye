@@ -1,4 +1,5 @@
 import { firebase, googleAuthProvider } from '../firebase/firebase'
+import { setModelExpenses } from './expenses'
 
 export const login = uid => ({
   type: 'LOGIN',
@@ -7,8 +8,24 @@ export const login = uid => ({
 
 export const startLogin = () => () => firebase.auth().signInWithPopup(googleAuthProvider)
 
-export const startAnonymousLogin = () => () => firebase.auth().signInAnonymously()
+export const startAnonymousLogin = () => (dispatch, getState) => {
+  console.log(dispatch)
+  return firebase
+    .auth()
+    .signInAnonymously()
+    .then((user) => {
+      console.log('uid', user.uid)
+      console.log('state', getState())
 
+      return Promise.resolve()
+    })
+    .then(() =>
+      // Not working as expected yet
+      // dispatch(setModelExpenses({ description: 'Rent', amount: 444, createdAt: Date.now() }))
+      Promise.resolve(),
+    )
+    .catch(e => console.log('didnt populate', e))
+}
 export const logout = () => ({ type: 'LOGOUT' })
 
 export const startLogout = () => () => {

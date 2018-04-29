@@ -5,15 +5,20 @@
 
   @media (min-width: $desktop-breakpoint) {
     flex-direction: row;
+    justify-content: space-between;
   }
 }
 
 .input-group > * {
   margin: 0 0 $s-size 0; // margin bottom
 
+
   &:last-child {
     margin: 0;
+
   }
+
+
 
   @media (min-width: $desktop-breakpoint) {
     margin: 0 $s-size 0 0; // margin right

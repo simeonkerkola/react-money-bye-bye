@@ -49,7 +49,7 @@ firebase.auth().onAuthStateChanged((user) => {
       renderApp()
 
       // Add some stock data for Anonymous users
-      if (user.isAnonymous) {
+      if (user.isAnonymous && hasRendered === true) {
         store.dispatch(startAddExpense({ description: 'Rent', amount: 666, createdAt: Date.now() }))
         store.dispatch(
           startAddExpense({

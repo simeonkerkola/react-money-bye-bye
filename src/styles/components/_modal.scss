@@ -20,7 +20,7 @@
 
 .modal {
   border-radius: 3px;
-  background: fade-out($slush-grey, .75);
+  background: fade-out(lighten($slush-grey, 35), .20);
   color: $dark-grey;
   max-width: 30rem;
   outline: none; // remove the border around the box

@@ -32,6 +32,7 @@
 .btn--quiet {
   background-color: transparent;
   color: currentColor;
+  transition: all .3s;
 
   &:hover {
     // To animate, I'm faking the border ;)
