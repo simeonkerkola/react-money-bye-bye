@@ -7,7 +7,7 @@ const Notification = () => {
     <div>
       {user.isAnonymous && (
         <div className="notification">
-          You are logged in as Anonymous, clicking Logout will remove all your saved data
+          You are logged in as Anonymous, Logging Out will remove all your saved data.
         </div>
       )}
     </div>

@@ -44,28 +44,30 @@ ReactDOM.render(<LoadingPage />, document.getElementById('app'))
 
 firebase.auth().onAuthStateChanged((user) => {
   if (user) {
+    const { isAnonymous } = user
     store.dispatch(login(user.uid))
-    store.dispatch(startSetExpenses()).then(() => {
+    if (isAnonymous) renderApp()
+    else store.dispatch(startSetExpenses()).then(() => {
       renderApp()
 
       // Add some stock data for Anonymous users
-      if (user.isAnonymous && hasRendered === true) {
-        store.dispatch(startAddExpense({ description: 'Rent', amount: 666, createdAt: Date.now() }))
-        store.dispatch(
-          startAddExpense({
-            description: 'Groceries',
-            amount: 15.2,
-            createdAt: Date.now() - 604800000,
-          }),
-        )
-        store.dispatch(
-          startAddExpense({
-            description: 'Water Bill',
-            amount: 22.22,
-            createdAt: Date.now() - 1004800000,
-          }),
-        )
-      }
+      // if (user.isAnonymous && !hasRendered) {
+      //   store.dispatch(startAddExpense({ description: 'Rent', amount: 666, createdAt: Date.now() }))
+      //   store.dispatch(
+      //     startAddExpense({
+      //       description: 'Groceries',
+      //       amount: 15.2,
+      //       createdAt: Date.now() - 604800000,
+      //     }),
+      //   )
+      //   store.dispatch(
+      //     startAddExpense({
+      //       description: 'Water Bill',
+      //       amount: 22.22,
+      //       createdAt: Date.now() - 1004800000,
+      //     }),
+      //   )
+      // }
 
       // Throw user from front page to the dashboard
       if (history.location.pathname === '/') history.push('/dashboard')

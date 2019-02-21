@@ -1,5 +1,5 @@
 import { firebase, googleAuthProvider } from '../firebase/firebase'
-import { setModelExpenses } from './expenses'
+import { startAddExpense } from './expenses'
 
 export const login = uid => ({
   type: 'LOGIN',
@@ -20,9 +20,7 @@ export const startAnonymousLogin = () => (dispatch, getState) => {
       return Promise.resolve()
     })
     .then(() =>
-      // Not working as expected yet
-      // dispatch(setModelExpenses({ description: 'Rent', amount: 444, createdAt: Date.now() }))
-      Promise.resolve(),
+      dispatch(startAddExpense({ description: 'Rent', amount: 444, createdAt: Date.now() }))
     )
     .catch(e => console.log('didnt populate', e))
 }

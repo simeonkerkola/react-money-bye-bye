@@ -28,8 +28,7 @@ export const startAddExpense = (expenseData = {}) =>
       })
   }
 
-export const setModelExpenses = expenseData => dispatch =>
-  dispatch(startAddExpense(expenseData)).then(() => dispatch(startSetExpenses()))
+export const setModelExpenses = expenseData => dispatch => dispatch(startAddExpense(expenseData))
 
 // REMOVE_EXPENSE
 export const removeExpense = ({ id } = {}) => ({

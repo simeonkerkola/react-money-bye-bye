@@ -18,9 +18,9 @@ export const ExpenseList = props => (
           <span>No expenses</span>
         </div>
       ) : (
-        (console.log('props.expenses', props.expenses),
-          props.expenses.map(expense => <ExpenseListItem key={expense.id} {...expense} />))
-      )}
+          (console.log('props.expenses', props.expenses),
+            props.expenses.map(expense => <ExpenseListItem key={expense.id} {...expense} />))
+        )}
     </div>
 
     {props.expenses.length > 0 && (
@@ -38,7 +38,7 @@ export const ExpenseList = props => (
 const mapStateToProps = (state) => {
   const visibleExpenses = selectExpenses(state.expenses, state.filters)
   return {
-    expenses: selectExpenses(state.expenses, state.filters),
+    expenses: visibleExpenses,
     expenseCount: visibleExpenses.length,
     expensesTotal: selectExpensesTotal(visibleExpenses).toFixed(2),
   }
